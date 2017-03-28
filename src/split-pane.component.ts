@@ -1,12 +1,8 @@
 import {
     Component, ViewChild, ElementRef, HostListener, EventEmitter, Input,
-    Output, OnChanges, SimpleChanges
+    Output, OnChanges, SimpleChanges, HostBinding
 } from '@angular/core';
 
-@Component({
-  selector: 'split-pane',
-  host: {'style': 'height: 100%'}
-})
 export abstract class SplitPaneComponent implements OnChanges {
 
   @ViewChild('primaryComponent') protected primaryComponent: ElementRef;
@@ -15,12 +11,14 @@ export abstract class SplitPaneComponent implements OnChanges {
   @Input('primary-component-initialratio') protected initialRatio: number = 0.5;
   @Input('primary-component-minsize') protected primaryMinSize: number = 0;
   @Input('secondary-component-minsize') protected secondaryMinSize: number = 0;
-  @Input('primary-component-toggled-off') protected primaryToggledOff: boolean = false;
-  @Input('secondary-component-toggled-off') protected secondaryToggledOff: boolean = false;
+  @Input('primary-component-toggled-off') primaryToggledOff: boolean = false;
+  @Input('secondary-component-toggled-off') secondaryToggledOff: boolean = false;
   @Input('local-storage-key') private localStorageKey: string = null;
   @Output('on-change') private notifySizeDidChange: EventEmitter<any> = new EventEmitter<any>();
   @Output('on-begin-resizing') private notifyBeginResizing: EventEmitter<any> = new EventEmitter<any>();
   @Output('on-ended-resizing') private notifyEndedResizing: EventEmitter<any> = new EventEmitter<any>();
+
+  @HostBinding('style.height') hostHeight = '100%';
 
   private primarySizeBeforeTogglingOff: number;
   private dividerSize: number = 8.0;
@@ -87,16 +85,16 @@ export abstract class SplitPaneComponent implements OnChanges {
     this.notifySizeDidChange.emit({'primary' : this.getPrimarySize(), 'secondary' : this.getSecondarySize()});
   }
 
-  private notifyWillChangeSize(resizing: boolean) {
+  notifyWillChangeSize(resizing: boolean) {
     this.isResizing = resizing;
     this.notifyBeginResizing.emit();
   }
 
   private checkValidBounds(newSize: number, minSize: number, maxSize: number): number {
-    return newSize >= minSize 
-            ? (newSize <= maxSize) 
-                ? newSize 
-                : maxSize 
+    return newSize >= minSize
+            ? (newSize <= maxSize)
+                ? newSize
+                : maxSize
             : minSize;
   }
 

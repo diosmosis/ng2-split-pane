@@ -1,7 +1,5 @@
 import { Component, OnInit, HostListener, EventEmitter, Output } from '@angular/core';
 
-@Component({
-})
 export class SplitSeparatorComponent implements OnInit {
 
   @Output() private notifyWillChangeSize: EventEmitter<boolean> = new EventEmitter<boolean>();

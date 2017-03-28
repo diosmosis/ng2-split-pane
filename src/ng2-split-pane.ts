@@ -12,7 +12,7 @@ import { VerticalSplitPaneComponent } from './vertical-split-pane.component';
     HorizontalSplitPaneComponent,
     VerticalSplitPaneComponent,
     HorizontalSplitSeparatorComponent,
-    VerticalSplitSeparatorComponent
+    VerticalSplitSeparatorComponent,
   ],
   exports: [HorizontalSplitPaneComponent, VerticalSplitPaneComponent]
 })

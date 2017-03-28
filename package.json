@@ -5,7 +5,7 @@
   "main": "split-pane.module.js",
   "scripts": {
     "watch": "tsc -p src -w",
-    "build": "rm -rf lib && tsc -p src"
+    "build": "rm -rf lib && ngc -p src"
   },
   "repository": {
     "type": "git",
@@ -28,18 +28,17 @@
     "url": "https://github.com/wannabegeek/ng2-split-pane/issues"
   },
   "homepage": "https://github.com/wannabegeek/ng2-split-pane/#readme",
-  "devDependencies": {
-    "typescript": "~2.0.3"
-  },
   "dependencies": {
-    "@angular/common": "^2.3.1",
-    "@angular/compiler": "^2.3.1",
-    "@angular/core": "^2.3.1",
-    "@angular/forms": "^2.3.1",
-    "@angular/http": "^2.3.1",
-    "@angular/platform-browser": "^2.3.1",
-    "@angular/platform-browser-dynamic": "^2.3.1",
-    "rxjs": "^5.0.1",
-    "zone.js": "^0.7.2"
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "rxjs": "^5.2.0",
+    "zone.js": "^0.8.5"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "^4.0.0",
+    "typescript": "^2.2.2"
   }
 }
