@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "tsc -p src -w",
     "build": "rm -rf lib && ngc -p src",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "postinstall": "npm run prepublish"
   },
   "repository": {
     "type": "git",
