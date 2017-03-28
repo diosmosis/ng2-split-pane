@@ -5,7 +5,8 @@
   "main": "split-pane.module.js",
   "scripts": {
     "watch": "tsc -p src -w",
-    "build": "rm -rf lib && ngc -p src"
+    "build": "rm -rf lib && ngc -p src",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
