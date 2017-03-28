@@ -1,0 +1,31 @@
+import { ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+export declare abstract class SplitPaneComponent implements OnChanges {
+    protected primaryComponent: ElementRef;
+    protected secondaryComponent: ElementRef;
+    protected initialRatio: number;
+    protected primaryMinSize: number;
+    protected secondaryMinSize: number;
+    primaryToggledOff: boolean;
+    secondaryToggledOff: boolean;
+    private localStorageKey;
+    private notifySizeDidChange;
+    private notifyBeginResizing;
+    private notifyEndedResizing;
+    hostHeight: string;
+    private primarySizeBeforeTogglingOff;
+    private dividerSize;
+    protected isResizing: boolean;
+    ngAfterViewInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    protected abstract getTotalSize(): number;
+    protected abstract getPrimarySize(): number;
+    protected abstract getSecondarySize(): number;
+    protected abstract dividerPosition(size: number): any;
+    protected getAvailableSize(): number;
+    protected applySizeChange(size: number): void;
+    notifyWillChangeSize(resizing: boolean): void;
+    private checkValidBounds(newSize, minSize, maxSize);
+    private checkBothToggledOff();
+    private stopResizing();
+    onMouseup(event: any): boolean;
+}
